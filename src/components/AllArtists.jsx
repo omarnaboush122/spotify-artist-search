@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
+import SingleArtist from "./SingleArtist";
 
 const Search = () => {
   const [artists, setArtists] = useState([]);
@@ -18,7 +19,7 @@ const Search = () => {
         type: "artist",
       },
     });
-    console.log(data);
+    setArtists(data.artists.items);
   };
 
   useEffect(() => {
@@ -38,16 +39,21 @@ const Search = () => {
     setToken(token);
   }, []);
 
+  const artistsElements = artists.map((artist) => (
+    <SingleArtist key={artist.id} artist={artist} />
+  ));
+
+  console.log(artists);
   return (
-    <div className="flex flex-col h-screen justify-center items-center w-80 mx-auto">
-      <div className="flex justify-center items-center w-full text-black py-3 px-6 rounded border border-solid border-gray-500">
-        <form onSubmit={handleSearchArtists} className="flex items-center">
+    <div className="flex flex-col min-h-screen justify-center items-center my-4">
+      <div className="flex justify-between items-center w-80 mx-auto text-black py-3 px-6 rounded border border-solid border-gray-500">
+        <form onSubmit={handleSearchArtists}>
           <input
             type="text"
             placeholder="Search for an artist..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="border-none outline-none mx-auto"
+            className="w-full border-none outline-none"
           />
           <button type="submit" className="hidden"></button>
         </form>
@@ -58,6 +64,9 @@ const Search = () => {
             onClick={handleSearchArtists}
           />
         </div>
+      </div>
+      <div className="grid grid-cols-1 gap-8 p-8 mt-10 md:grid-cols-2 lg:grid-cols-4">
+        {artistsElements}
       </div>
     </div>
   );
