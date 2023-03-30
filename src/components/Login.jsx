@@ -1,8 +1,6 @@
 import { FaSpotify } from "react-icons/fa";
-import SpotifyWebApi from "spotify-web-api-js";
 
 const Login = () => {
-  const spotifyApi = new SpotifyWebApi();
 
   const handleLogin = () => {
     const redirectUri = "http://localhost:5173/artist-search";

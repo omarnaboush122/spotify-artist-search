@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import Search from "../components/Search";
 
 const ArtistSearch = () => {
   return (
-    <div>
-      artist search
-    </div>
+    <main>
+      <Search />
+    </main>
   );
-}
+};
 
 export default ArtistSearch;
