@@ -7,7 +7,6 @@ const Album = ({ album }) => {
         src={album.images[0].url}
         alt={album.name}
         className="w-full h-52 object-cover"
-        loading="lazy"
       />
       <div className="p-4 flex flex-col justify-between">
         <div>

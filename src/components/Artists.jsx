@@ -65,7 +65,10 @@ const Artists = () => {
     <div className="min-h-screen bg-gray-100">
       <div className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-3">
-          <form onSubmit={handleSearchArtists} className="flex items-center">
+          <form
+            onSubmit={handleSearchArtists}
+            className="flex justify-center items-center"
+          >
             <input
               type="text"
               placeholder="Search for an artist..."
