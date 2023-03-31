@@ -6,7 +6,9 @@ This is a single-page application built with React that allows users to search f
 To get started, you'll need to have Node.js and npm installed on your machine. Clone this repository and run the following commands:
 
 cd spotify-artist-search
+
 npm install
+
 npm run dev
 
 This will install the necessary dependencies and start the development server. You can then view the application by navigating to http://localhost:5173 in your web browser.
