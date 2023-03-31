@@ -10,6 +10,7 @@ const Artist = ({ artist }) => {
         src={artist.images[0].url}
         alt="artist-img"
         className="w-full h-52 object-cover"
+        loading="lazy"
       />
       <div className="p-4">
         <h3 className="text-xl font-medium mb-1">{artist.name}</h3>

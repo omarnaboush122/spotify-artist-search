@@ -1,14 +1,13 @@
 import React from "react";
 
-const Album = ({album}) => {
+const Album = ({ album }) => {
   return (
-    <div
-      className="bg-white rounded-lg overflow-hidden shadow-lg"
-    >
+    <div className="bg-white rounded-lg overflow-hidden shadow-lg">
       <img
         src={album.images[0].url}
         alt={album.name}
         className="w-full h-52 object-cover"
+        loading="lazy"
       />
       <div className="flex flex-col">
         <div className="p-4">

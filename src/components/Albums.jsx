@@ -26,12 +26,17 @@ function Albums() {
   };
 
   useEffect(() => {
-    setToken(window.localStorage.getItem("token"));
+    const storedToken = window.localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
   }, []);
 
   useEffect(() => {
-    fetchAlbums(id);
-  }, [id]);
+    if (token) {
+      fetchAlbums(id);
+    }
+  }, [id, token]);
 
   const allAlbums = albums.map((album) => (
     <Album key={album.id} album={album} />
@@ -39,7 +44,7 @@ function Albums() {
 
   return (
     <div className="p-8 my-5">
-      <h2 className="text-lg font-bold mb-8">Albums</h2>
+      <h2 className="text-2xl font-bold mb-8">Albums</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {allAlbums}
       </div>
