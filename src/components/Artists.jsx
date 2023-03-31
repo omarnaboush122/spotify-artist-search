@@ -62,29 +62,31 @@ const Artists = () => {
   ));
 
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center my-4">
-      <div className="flex justify-between items-center w-80 mx-auto text-black py-3 px-6 rounded border border-solid border-gray-500">
-        <form onSubmit={handleSearchArtists}>
-          <input
-            type="text"
-            placeholder="Search for an artist..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="w-full border-none outline-none"
-          />
-          <button type="submit" className="hidden"></button>
-        </form>
-        <div className="ml-4">
-          <FaSearch
-            size={30}
-            className=" text-gray-300 cursor-pointer"
-            onClick={handleSearchArtists}
-          />
+    <div className="min-h-screen bg-gray-100">
+      <div className="bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-3">
+          <form onSubmit={handleSearchArtists} className="flex items-center">
+            <input
+              type="text"
+              placeholder="Search for an artist..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className="py-2 px-3 border rounded-lg border-gray-400 focus:outline-none focus:border-blue-500"
+            />
+            <button
+              type="submit"
+              className="ml-2 px-3 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:bg-blue-600 transition duration-300 ease-in-out"
+            >
+              <FaSearch />
+            </button>
+          </form>
         </div>
       </div>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-      <div className="grid grid-cols-1 gap-4 p-8 mt-10 md:grid-cols-2 lg:grid-cols-4">
-        {artistsElements}
+      {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {artistsElements}
+        </div>
       </div>
     </div>
   );
