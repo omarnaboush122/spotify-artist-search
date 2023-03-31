@@ -1,26 +1,12 @@
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-import SingleArtist from "./SingleArtist";
+import Artist from "./Artist";
 
-const Search = () => {
+const Artists = () => {
   const [artists, setArtists] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [token, setToken] = useState("");
-
-  const handleSearchArtists = async (e) => {
-    e.preventDefault();
-    const { data } = await axios.get("https://api.spotify.com/v1/search", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      params: {
-        q: searchText,
-        type: "artist",
-      },
-    });
-    setArtists(data.artists.items);
-  };
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -39,11 +25,28 @@ const Search = () => {
     setToken(token);
   }, []);
 
+  const handleSearchArtists = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.get("https://api.spotify.com/v1/search", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          q: searchText,
+          type: "artist",
+        },
+      });
+      setArtists(data.artists.items);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const artistsElements = artists.map((artist) => (
-    <SingleArtist key={artist.id} artist={artist} />
+    <Artist key={artist.id} artist={artist} />
   ));
 
-  console.log(artists);
   return (
     <div className="flex flex-col min-h-screen justify-center items-center my-4">
       <div className="flex justify-between items-center w-80 mx-auto text-black py-3 px-6 rounded border border-solid border-gray-500">
@@ -65,11 +68,11 @@ const Search = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-8 p-8 mt-10 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 p-8 mt-10 md:grid-cols-2 lg:grid-cols-4">
         {artistsElements}
       </div>
     </div>
   );
 };
 
-export default Search;
+export default Artists;

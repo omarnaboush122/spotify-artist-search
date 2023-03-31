@@ -1,10 +1,9 @@
-import React from "react";
-import AllArtists from "../components/AllArtists";
+import Artists from "../components/Artists";
 
 const ArtistsPage = () => {
   return (
     <main>
-      <AllArtists />
+      <Artists />
     </main>
   );
 };

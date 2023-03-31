@@ -1,7 +1,6 @@
 import { FaSpotify } from "react-icons/fa";
 
 const Login = () => {
-
   const handleLogin = () => {
     const redirectUri = "http://localhost:5173/artist-search";
     const scope = "user-read-private user-read-email";

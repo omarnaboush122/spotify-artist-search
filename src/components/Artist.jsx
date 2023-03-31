@@ -1,6 +1,11 @@
-const SingleArtist = ({ artist }) => {
+import { Link } from "react-router-dom";
+
+const Artist = ({ artist }) => {
   return (
-    <div className="border border-solid border-gray-500 rounded-md">
+    <Link
+      to={`/artist-search/${artist.id}/albums`}
+      className="border border-solid border-gray-500 rounded-md"
+    >
       <img
         src={artist.images[0].url}
         alt="artist-img"
@@ -23,8 +28,8 @@ const SingleArtist = ({ artist }) => {
           })}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
-export default SingleArtist;
+export default Artist;
