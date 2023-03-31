@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 const Artist = ({ artist }) => {
   const renderStarRating = () => {
     return (
-      <div className="star-rating">
+      <div className="flex">
         {[...Array(5)].map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            className="text-black bg-transparent border-none outline-none cursor-pointer"
-          >
-            <span className="text-lg">&#9733;</span>
-          </button>
+          <FaStar
+          key={index}
+          className={`star ${
+            artist.popularity >= (index + 1) * 20 ? "text-[#fcd34d]" : ""
+          }`}
+        />
         ))}
       </div>
     );

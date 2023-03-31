@@ -9,6 +9,8 @@ const Artists = () => {
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
 
+  console.log(artists);
+
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
