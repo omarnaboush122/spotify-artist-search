@@ -7,6 +7,7 @@ const Artists = () => {
   const [artists, setArtists] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [token, setToken] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -27,6 +28,12 @@ const Artists = () => {
 
   const handleSearchArtists = async (e) => {
     e.preventDefault();
+
+    if (!searchText) {
+      setError("Please enter a search query.");
+      return;
+    }
+
     try {
       const { data } = await axios.get("https://api.spotify.com/v1/search", {
         headers: {
@@ -37,7 +44,14 @@ const Artists = () => {
           type: "artist",
         },
       });
+
+      if (data.artists.items.length === 0) {
+        setError("No artists found.");
+        return;
+      }
+
       setArtists(data.artists.items);
+      setError("");
     } catch (err) {
       console.log(err);
     }
@@ -68,6 +82,7 @@ const Artists = () => {
           />
         </div>
       </div>
+      {error && <p className="text-red-500 mt-2">{error}</p>}
       <div className="grid grid-cols-1 gap-4 p-8 mt-10 md:grid-cols-2 lg:grid-cols-4">
         {artistsElements}
       </div>
