@@ -9,8 +9,6 @@ const Artists = () => {
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
 
-  console.log(artists);
-
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
@@ -76,11 +74,11 @@ const Artists = () => {
               placeholder="Search for an artist..."
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              className="py-2 px-3 border rounded-lg border-gray-400 focus:outline-none focus:border-blue-500"
+              className="py-2 px-3 border rounded-lg border-gray-400 focus:outline-none focus:border-green-500"
             />
             <button
               type="submit"
-              className="ml-2 px-3 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:bg-blue-600 transition duration-300 ease-in-out"
+              className="ml-2 px-3 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 transition duration-300 ease-in-out"
             >
               <FaSearch />
             </button>
