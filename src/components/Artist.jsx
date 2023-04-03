@@ -23,7 +23,7 @@ const Artist = ({ artist }) => {
       className="border border-solid border-gray-500 rounded-md"
     >
       <img
-        src={artist.images[0].url}
+        src={artist.images[0]?.url}
         alt="artist-img"
         className="w-full h-52 object-cover"
       />

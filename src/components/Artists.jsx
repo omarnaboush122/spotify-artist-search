@@ -87,9 +87,11 @@ const Artists = () => {
       </div>
       {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
       <div className="container mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {artistsElements}
-        </div>
+        {artists && (
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {artistsElements}
+          </div>
+        )}
       </div>
     </div>
   );
